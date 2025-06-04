@@ -13,7 +13,7 @@ public class Executor {
 
         // Task 2 - IMC
         try {
-            System.out.println(imc(8, 1.77));
+            System.out.println(imc(8.2, 1.77));
         } catch (IllegalArgumentException iae) {
             System.out.println("An error occurred: " + iae);
         }

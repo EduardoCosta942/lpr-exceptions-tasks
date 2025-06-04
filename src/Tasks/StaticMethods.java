@@ -1,30 +1,30 @@
 package Tasks;
 
 public class StaticMethods {
-    public static String verificationDigit(String stringOfNumbers) {
+    public static String verificationDigit(String stringOfNumbers) throws IllegalArgumentException{
         // Declaring vars:
         int sum = 0;
 
         if (stringOfNumbers.length() != 10) {
-            throw new IllegalArgumentException("Var: stringOfNumbers must have exactly 10 characters"); // Throwing IllegalArgumentException
+            throw new IllegalArgumentException("Var: stringOfNumbers must have exactly 10 characters"); // Throwing IllegalArgumentException if var: stringOfNumbers, have a length different from 10
         }
         // Solving for sum:
         for (char character : stringOfNumbers.toCharArray()) { // Integrating at var: stringOfNumbers
             if (!"0123456789".contains(String.valueOf(character))) {
-                throw new IllegalArgumentException("Var: stringOfNumbers must have only integer numbers"); // Throwing IllegalArgumentException 2
+                throw new IllegalArgumentException("Var: stringOfNumbers must have only integer numbers"); // Throwing IllegalArgumentException if var: stringOfNumbers, have characters non-numeric
             }
             sum += character - '0';
         }
         return String.valueOf(sum / 10); // verificationDigit
     }
 
-    public static String  imc(double weight, double height) {
+    public static String  imc(double weight, double height) throws IllegalArgumentException {
         if (weight <= 0 || height <= 0) {
             throw new IllegalArgumentException ("Vars must be higher than 0");
         }
         return imc(weight / (height * height));
     }
-    public static String imc(double imc) {
+    public static String imc(double imc) throws IllegalArgumentException{
         if (imc <= 0) {
             throw new IllegalArgumentException ("Var must be higher than 0");
         }
