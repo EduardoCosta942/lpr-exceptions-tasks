@@ -21,19 +21,19 @@ public class Methods {
         return "Isósceles";
     }
 
-//    public static double disccount(LocalDate signUp_date, double value, int boughtsAtLastMonth) throws InputMismatchException{
-//        int disccount = 0;
-//        if (ChronoUnit.YEARS.between(LocalDate.now(), signUp_date) > 10) {
-//            disccount+=15;
-//        }
-//        if (value > 1500) {
-//            disccount+=17;
-//        }
-//        if (boughtsAtLastMonth > 5) {
-//            disccount+=13;
-//        }
-//        return disccount;
-//    }
+    public static double disccount(LocalDate signUp_date, double value, int boughtsAtLastMonth) throws InputMismatchException{
+        int disccount = 0;
+        if (ChronoUnit.YEARS.between(LocalDate.now(), signUp_date) > 10) {
+            disccount+=15;
+        }
+        if (value > 1500) {
+            disccount+=17;
+        }
+        if (boughtsAtLastMonth > 5) {
+            disccount+=13;
+        }
+        return disccount;
+    }
 
     public static String weekDay(byte targetDay) throws IllegalArgumentException{
         // Declaring vars:
@@ -46,5 +46,13 @@ public class Methods {
         if (targetDay < 1 || targetDay > 7) throw new IllegalArgumentException("Parameter must be in range (1 to 7)"); // Throwing IAE according to condition
 
         return daysOfTheWeek[targetDay - 1]; // If there is no IAE, returning the correct String.
+    }
+
+    public static double prestacao(double value, double jurosMensais, int numerosParcelas) throws ArithmeticException, IllegalArgumentException{
+        if (value <= 0 || jurosMensais <= 0 || numerosParcelas <= 0) throw new IllegalArgumentException("Parameters can not be under 0.");
+        jurosMensais/=100;
+        value*= Math.pow((1+jurosMensais), numerosParcelas);
+        if (value/numerosParcelas < 50){ throw new  IllegalArgumentException("Parcelas insuficientes");}
+        return value/numerosParcelas;
     }
 }

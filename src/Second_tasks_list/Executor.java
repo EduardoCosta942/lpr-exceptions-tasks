@@ -12,6 +12,9 @@ public class Executor {
         int n;
         String dayOfTheWeek = "";
         int[] triangleSides = new int[3];
+        double valorTotal = 0;
+        int quantidadePrestacoes = 0;
+        double jurosMensais = 0;
 
         // Main for exercise 1:
         do {
@@ -36,5 +39,22 @@ public class Executor {
             }
             scanner.next();
         } while (!dayOfTheWeek.equals("end"));
+
+        // Main for exercise 4:
+        do {
+            try {
+                System.out.println("Digite o valor total: ");
+                valorTotal = scanner.nextDouble();
+                System.out.println("Digite a taxa de juros mensais: ");
+                jurosMensais = scanner.nextDouble();
+                System.out.println("Digite a quantidade de prestacoes: ");
+                quantidadePrestacoes = scanner.nextInt();
+                System.out.println(Methods.prestacao(valorTotal, jurosMensais, quantidadePrestacoes));
+                again = false;
+            } catch (IllegalArgumentException | ArithmeticException | InputMismatchException e) {
+                System.out.println("An error occurred: " + e);
+                again = true;
+            }
+        } while (again);
     }
 }
